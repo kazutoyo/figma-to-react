@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from './utils/stringUtils'
+import { capitalizeFirstLetter, kebabToUpperCamel } from './utils/stringUtils'
 import { Tag } from './buildTagTree'
 import { buildClassName } from './utils/cssUtils'
 
@@ -75,7 +75,7 @@ function buildJsxString(tag: Tag, cssStyle: CssStyle, level: number) {
   const spaceString = buildSpaces(4, level)
   const hasChildren = tag.children.length > 0
 
-  const tagName = getTagName(tag, cssStyle)
+  const tagName = kebabToUpperCamel(getTagName(tag, cssStyle))
   const className = getClassName(tag, cssStyle)
   const properties = tag.properties.map(buildPropertyString).join('')
 
